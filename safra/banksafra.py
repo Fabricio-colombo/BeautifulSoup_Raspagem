@@ -14,13 +14,26 @@ headers = {
 }
 
 data = {
-    'CBU': '',
-    'Senha': ''
+    'CBU': 'CBU36005',
+    'Senha': 'Consig@24'
 }
 
 url = 'https://epfweb.safra.com.br/'
 
+session = requests.Session()
+
+url = 'https://epfweb.safra.com.br/Home/Login?forcarLoginManual=S'
+
+response = session.get(url, headers=headers)
+print(response)
+print(response.cookies.get_dict())
+
+
+url = 'https://epfweb.safra.com.br/Home/Login'
+
 response = requests.post(url, headers=headers, data=data)
+
+
 
 if response.status_code == 200:
     soup = BeautifulSoup(response.content, 'html.parser')
