@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import pprint
+from login import login, senha
 
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
@@ -14,8 +15,8 @@ headers = {
 }
 
 data = {
-    'CBU': 'CBU36005',
-    'Senha': 'Consig@24'
+    'CBU': login,
+    'Senha': senha
 }
 
 url = 'https://epfweb.safra.com.br/'
