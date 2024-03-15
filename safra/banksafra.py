@@ -7,17 +7,20 @@ headers = {
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
     'Accept-Encoding': 'gzip, deflate, br, zstd',
     'Accept-Language': 'en-US,en;q=0.9,pt;q=0.8',
-    'Sec-Fetch-Dest': 'document',
-    'Sec-Fetch-Mode': 'navigate',
-    'Sec-Fetch-Site': 'none',
-    'Sec-Fetch-User': '?1',
-    'Sec-Gpc': '1',
-    'Upgrade-Insecure-Requests': '1',
+    'Cache-Control': 'max-age=0',
+    'Content-Type': 'application/x-www-form-urlencoded',
+    'Origin': 'https://epfweb.safra.com.br',
+    'Referer': 'https://epfweb.safra.com.br/Home/Login',
 }
 
-url = 'https://www.globo.com/'
+data = {
+    'CBU': '',
+    'Senha': ''
+}
 
-response = requests.get(url, headers=headers)
+url = 'https://epfweb.safra.com.br/'
+
+response = requests.post(url, headers=headers, data=data)
 
 if response.status_code == 200:
     soup = BeautifulSoup(response.content, 'html.parser')
